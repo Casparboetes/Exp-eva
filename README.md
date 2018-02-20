@@ -42,4 +42,4 @@ _**Note**: See `db/seed.js` for an example._
 | `DELETE` | `/batches/:id` | Destroy a single batch by it's `id`* |
 | | | _* Needs authentication_ |
 
-_**Note**: Run `yarn run seed` to seed some initial batches._
+_**Note**: Run `yarn run seed` to seed some initial data._
