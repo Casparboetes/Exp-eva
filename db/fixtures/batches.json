@@ -1,0 +1,17 @@
+[
+  {
+    "batchNum": "1",
+    "startDate": "01/27/2018",
+    "endDate": "03/27/2018"
+  },
+  {
+    "batchNum": "2",
+    "startDate": "03/27/2018",
+    "endDate": "05/27/2018"
+  },
+  {
+    "batchNum": "3",
+    "startDate": "05/27/2018",
+    "endDate": "07/27/2018"
+  }
+]

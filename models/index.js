@@ -1,8 +1,10 @@
 // models/index.js
-const Game = require('./game')
+const Batch = require('./batch')
 const User = require('./user')
+const Student = require('./student')
 
 module.exports = {
-  Game,
-  User
+  Batch,
+  User,
+  Student
 }
