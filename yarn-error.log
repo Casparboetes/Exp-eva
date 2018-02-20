@@ -2,7 +2,7 @@ Arguments:
   /home/funkmachine3k/.nvm/versions/node/v8.5.0/bin/node /usr/share/yarn/bin/yarn.js upgrade --latest
 
 PATH: 
-  /home/funkmachine3k/.nvm/versions/node/v8.5.0/bin:/home/funkmachine3k/.rbenv/shims:/home/funkmachine3k/.rbenv/plugins/ruby-build/bin:/home/funkmachine3k/.rbenv/shims:/home/funkmachine3k/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+  /home/funkmachine3k/.nvm/versions/node/v8.5.0/bin:/home/funkmachine3k/.rbenv/shims:/home/funkmachine3k/.rbenv/plugins/ruby-build/bin:/home/funkmachine3k/.rbenv/shims:/home/funkmachine3k/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/batches:/usr/local/batches
 
 Yarn version: 
   1.3.2
