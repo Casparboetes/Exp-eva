@@ -1,6 +1,6 @@
-# Express Games API
+# Express Evaluations API
 
-RESTful Express API for Games on top of MongoDB.
+RESTful Express API for Student Evaluations on top of MongoDB.
 
 ## Authentication
 
