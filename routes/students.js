@@ -28,9 +28,7 @@ module.exports = io => {
         .catch((error) => next(error))
     })
     .post('/students', authenticate, (req, res, next) => {
-      const newStudent = {
-        userId: req.account._id
-      }
+      const newStudent = req.body
 
       Student.create(newStudent)
         .then((student) => {
