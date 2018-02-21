@@ -19,10 +19,10 @@ module.exports = io => {
         // Throw a 500 error if something goes wrong
         .catch((error) => next(error))
     })
-    .get('/students/:id', (req, res, next) => {
+    .get('/students/batch/:id', (req, res, next) => {
       const id = req.params.id
 
-      Student.findById(id)
+      Student.find({ batchNum : id })
         .then((student) => {
           if (!student) { return next() }
           res.json(student)
