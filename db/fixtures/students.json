@@ -123,7 +123,7 @@
     "studentName": "Jan Alleman",
     "photo": "http://via.placeholder.com/500x180?text=No%20Image",
     "batchNum": "2",
-    "green": true,
+    "green": false,
     "yellow": true,
     "red": false,
     "remark": "Remarks...",
