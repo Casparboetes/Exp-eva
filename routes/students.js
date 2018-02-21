@@ -33,7 +33,7 @@ module.exports = io => {
     .get('/students/batch/:id/random', (req, res, next) => {
       const id = req.params.id
 
-      Student.find({ batchNum : id }) // A SYNCHROON
+      Student.find({ batchNum : id }) // ASYNCHROON
         .then((studentList) => {
           const redStudents = studentList.filter(student => student.red)
           const yellowStudents = studentList.filter(student => student.yellow)
