@@ -16,6 +16,8 @@ module.exports = io => {
         // Throw a 500 error if something goes wrong
         .catch((error) => next(error))
     })
+
+
     .get('/students/batch/:id', (req, res, next) => {
       const id = req.params.id
 
@@ -27,6 +29,17 @@ module.exports = io => {
         .catch((error) => next(error))
     })
 
+    .get('/students/:id', (req, res, next) => {
+      const studentId = req.params.id
+
+      Student.findById(studentId)
+      .then((student) => {
+        if (!student) { return next() }
+        res.json(student)
+      })
+      .catch((error) => next(error))
+    })
+    
     .get('/students/batch/:id/random', (req, res, next) => {
       const id = req.params.id
 
