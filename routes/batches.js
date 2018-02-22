@@ -7,7 +7,7 @@ const authenticate = passport.authorize('jwt', { session: true })
 
 module.exports = io => {
   router
-    .get('/batches', (req, res, next) => {
+    .get('/batches', authenticate, (req, res, next) => {
       Batch.find()
         // Newest batches first
         .sort({ createdAt: 1 })
@@ -16,7 +16,7 @@ module.exports = io => {
         // Throw a 500 error if something goes wrong
         .catch((error) => next(error))
     })
-    .get('/batches/:id', (req, res, next) => {
+    .get('/batches/:id', authenticate, (req, res, next) => {
       const id = req.params.id
 
       Batch.findById(id)
