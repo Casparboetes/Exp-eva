@@ -3,7 +3,7 @@ const router = require('express').Router()
 const passport = require('../config/auth')
 const { Student } = require('../models')
 
-const authenticate = passport.authorize('jwt', { session: false })
+const authenticate = passport.authorize('jwt', { session: true })
 
 module.exports = io => {
   router
@@ -16,7 +16,6 @@ module.exports = io => {
         // Throw a 500 error if something goes wrong
         .catch((error) => next(error))
     })
-
 
     .get('/students/batch/:id', (req, res, next) => {
       const id = req.params.id
@@ -40,7 +39,7 @@ module.exports = io => {
       .catch((error) => next(error))
     })
 
-    .get('/students/batch/:id/random', (req, res, next) => {
+    .get('/students/batch/:id/random', authenticate, (req, res, next) => {
       const id = req.params.id
 
       Student.find({ batchNum : id }) // ASYNCHROON
@@ -72,7 +71,6 @@ module.exports = io => {
         .catch((error) => next(error))
     })
 
-
     .post('/students', authenticate, (req, res, next) => {
       const newStudent = req.body
 
@@ -86,44 +84,5 @@ module.exports = io => {
         })
         .catch((error) => next(error))
     })
-    .patch('/students/:id', authenticate, (req, res, next) => {
-      const id = req.params.id
-      const userId = req.account._id.toString()
-
-      Student.findById(id)
-        .then((student) => {
-          if (!student) { return next() }
-
-          const updatedStudent = processMove(student, req.body, userId)
-
-          Student.findByIdAndUpdate(id, { $set: updatedStudent }, { new: true })
-            .then((student) => {
-              io.emit('action', {
-                type: 'STUDENT_UPDATED',
-                payload: student
-              })
-              res.json(student)
-            })
-            .catch((error) => next(error))
-        })
-        .catch((error) => next(error))
-    })
-    .delete('/students/:id', authenticate, (req, res, next) => {
-      const id = req.params.id
-      Student.findByIdAndRemove(id)
-        .then(() => {
-          io.emit('action', {
-            type: 'STUDENT_REMOVED',
-            payload: id
-          })
-          res.status = 200
-          res.json({
-            message: 'Removed',
-            _id: id
-          })
-        })
-        .catch((error) => next(error))
-    })
-
   return router
 }

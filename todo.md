@@ -1,3 +1,44 @@
+<!-- .patch('/students/:id', authenticate, (req, res, next) => {
+  const id = req.params.id
+  const userId = req.account._id.toString()
+
+  Student.findById(id)
+    .then((student) => {
+      if (!student) { return next() }
+
+      const updatedStudent = processMove(student, req.body, userId)
+
+      Student.findByIdAndUpdate(id, { $set: updatedStudent }, { new: true })
+        .then((student) => {
+          io.emit('action', {
+            type: 'STUDENT_UPDATED',
+            payload: student
+          })
+          res.json(student)
+        })
+        .catch((error) => next(error))
+    })
+    .catch((error) => next(error))
+})
+.delete('/students/:id', authenticate, (req, res, next) => {
+  const id = req.params.id
+  Student.findByIdAndRemove(id)
+    .then(() => {
+      io.emit('action', {
+        type: 'STUDENT_REMOVED',
+        payload: id
+      })
+      res.status = 200
+      res.json({
+        message: 'Removed',
+        _id: id
+      })
+    })
+    .catch((error) => next(error))
+}) -->
+
+=============================================================================
+
 const sortByMoves = (playerA, playerB) => {
   const a = playerA.symbol
   const b = playerB.symbol
