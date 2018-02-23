@@ -39,7 +39,7 @@ module.exports = io => {
       })
       .catch((error) => next(error))
     })
-    
+
     .get('/students/batch/:id/random', (req, res, next) => {
       const id = req.params.id
 
