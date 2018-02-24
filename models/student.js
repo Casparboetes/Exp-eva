@@ -7,7 +7,7 @@ const studentSchema = new Schema({
   batchNum: { type: Number, required: true },
   green: { type: Boolean, default: false },
   yellow: { type: Boolean, default: false },
-  red: { type: Boolean, default: false },
+  red: { type: Boolean, default: true },
   remark: { type: String, required: false },
   evaluationDate: { type: Date, default: Date.now }
 })
