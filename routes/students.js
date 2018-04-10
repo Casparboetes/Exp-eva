@@ -84,5 +84,28 @@ module.exports = io => {
         })
         .catch((error) => next(error))
     })
+
+    .put('/students/:id', authenticate, (req, res, next) => {
+      const id = req.params.id
+
+      Student.findById(id)
+        .then((student) => {
+          if (!student) { return next() }
+
+          Student.findByIdAndUpdate(id, { $set: updatedStudent }, { new: true })
+            .then((student) => {
+              io.emit('action', {
+                type: 'STUDENT_UPDATED',
+                payload: student
+              })
+              res.json(student)
+            })
+            .catch((error) => next(error))
+        })
+        .catch((error) => next(error))
+    })
+
+
+
   return router
 }
